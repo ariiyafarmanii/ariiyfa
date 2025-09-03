@@ -6,17 +6,54 @@
   <style>
     body {
       background: black;
-      color: red;
+      margin: 0;
+      overflow: hidden;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
+      font-family: Tahoma, sans-serif;
+      color: red;
       font-size: 40px;
-      font-family: "Tahoma";
+    }
+    .message {
+      border-right: 3px solid red;
+      white-space: nowrap;
+      overflow: hidden;
+      animation: typing 4s steps(20) forwards, blink 0.8s infinite;
+    }
+    @keyframes typing {
+      from { width: 0 }
+      to { width: 100% }
+    }
+    @keyframes blink {
+      50% { border-color: transparent }
+    }
+    .heart {
+      position: absolute;
+      color: red;
+      font-size: 30px;
+      animation: fall linear forwards;
+    }
+    @keyframes fall {
+      from { transform: translateY(-10vh); opacity: 1; }
+      to { transform: translateY(110vh); opacity: 0; }
     }
   </style>
 </head>
 <body>
-  ❤️ دوستت دارم ❤️
+  <div class="message">❤️ دوستت دارم ❤️</div>
+  <script>
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (2 + Math.random() * 3) + "s";
+      heart.innerHTML = "❤️";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 300);
+  </script>
 </body>
 </html>

@@ -1,3 +1,4 @@
+
 body {
   background: #121212;
   color: white;
@@ -14,7 +15,8 @@ body {
   border-radius: 10px;
   text-align: center;
   width: 300px;
-  box-shadow: 0 0 10px rgba(255,0,0,0.5);
+  box-shadow: 0 0 20px crimson;
+  animation: pulse 2s infinite alternate;
 }
 
 .login-box input {
@@ -23,6 +25,7 @@ body {
   margin: 10px 0;
   border: none;
   border-radius: 5px;
+  text-align: center;
 }
 
 .login-box button {
@@ -34,4 +37,14 @@ body {
   font-size: 16px;
   border-radius: 5px;
   cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.login-box button:hover {
+  transform: scale(1.05);
+}
+
+@keyframes pulse {
+  from { box-shadow: 0 0 10px crimson; }
+  to { box-shadow: 0 0 30px crimson; }
 }
